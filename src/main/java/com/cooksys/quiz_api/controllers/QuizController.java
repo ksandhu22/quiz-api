@@ -17,6 +17,7 @@ import com.cooksys.quiz_api.dtos.QuestionRequestDto;
 import com.cooksys.quiz_api.dtos.QuestionResponseDto;
 import com.cooksys.quiz_api.dtos.QuizRequestDto;
 import com.cooksys.quiz_api.dtos.QuizResponseDto;
+import com.cooksys.quiz_api.exceptions.NotFoundException;
 import com.cooksys.quiz_api.services.QuizService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,46 +27,42 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/quiz")
 public class QuizController {
 
-  private final QuizService quizService;
+	private final QuizService quizService;
 
-  @GetMapping
-  public List<QuizResponseDto> getAllQuizzes() {
-    return quizService.getAllQuizzes();
-  }
-  
+	@GetMapping
+	public List<QuizResponseDto> getAllQuizzes() {
+		return quizService.getAllQuizzes();
+	}
+
 //  // TODO: Implement the remaining 6 endpoints from the documentation.
-//  @PostMapping
-//  @ResponseStatus(HttpStatus.CREATED)
-//  public QuizResponseDto createQuiz(@RequestBody QuizRequestDto quizRequestDto) {
-//	  return quizService.createQuiz(quizRequestDto);
-//  }
-//  
-//   
-//  
-//  @DeleteMapping("{id}")
-//  void deleteQuiz(@PathVariable Long id) {quizService.deleteQuiz(id);
-//  }
-//  
-//  @PatchMapping("{id}/rename/{newName}")
-//  public QuizResponseDto updateQuiz(@PathVariable Long id,@PathVariable String newName) {
-//	  
-//  return quizService.updateQuiz(id, newName); 
-//  }
-//  
-//  @GetMapping("/{id}/random")
-//  public QuestionResponseDto randomQuestion(@PathVariable Long id) {
-//	  return quizService.randomQuestion(id);
-//  }
-//  
-//  @PatchMapping("{id}/add")
-//  public QuizResponseDto addQuestion(@PathVariable Long id, QuestionRequestDto questionRequestDto) {
-//	  return quizService.addQuestion(id, questionRequestDto);
-//  }
-//  
-//  @DeleteMapping("{id}/delete/{question_id}")
-//  public QuestionResponseDto deleteQuestion(@PathVariable Long id,@PathVariable Long questionId) {
-//	  return quizService.deleteQuestion(id, questionId);
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public QuizResponseDto createQuiz(@RequestBody QuizRequestDto quizRequestDto) {
+		return quizService.createQuiz(quizRequestDto);
+	}
+
+	@DeleteMapping("quiz/{id}")
+	public QuizResponseDto deleteQuiz(@PathVariable Long id) throws NotFoundException{
+		return quizService.deleteQuiz(id);
+	}
+  
+  @PatchMapping("{id}/rename/{newName}")
+  public QuizResponseDto updateQuiz(@PathVariable Long id,@PathVariable String newName) {
+	  
+  return quizService.updateQuiz(id, newName); 
   }
   
+  @GetMapping("/{id}/random")
+  public QuestionResponseDto randomQuestion(@PathVariable Long id) {
+	  return quizService.randomQuestion(id);
+  }
   
-
+  @PatchMapping("{id}/add")
+  public QuizResponseDto addQuestion(@PathVariable Long id, QuestionRequestDto questionRequestDto) {
+	  return quizService.addQuestion(id, questionRequestDto);
+  }
+  
+  @DeleteMapping("{id}/delete/{question_id}")
+  public QuestionResponseDto deleteQuestion(@PathVariable Long id,@PathVariable Long questionId) {
+	  return quizService.deleteQuestion(id, questionId);
+}
