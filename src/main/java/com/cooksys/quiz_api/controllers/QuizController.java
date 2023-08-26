@@ -36,13 +36,12 @@ public class QuizController {
 
 //  // TODO: Implement the remaining 6 endpoints from the documentation.
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public QuizResponseDto createQuiz(@RequestBody QuizRequestDto quizRequestDto) {
-		return quizService.createQuiz(quizRequestDto);
+	public QuizResponseDto createQuiz(@RequestBody QuizRequestDto newQuiz) {
+		return quizService.createQuiz(newQuiz);
 	}
 
-	@DeleteMapping("quiz/{id}")
-	public QuizResponseDto deleteQuiz(@PathVariable Long id) throws NotFoundException{
+	@DeleteMapping("{id}")
+	public QuizResponseDto deleteQuiz(@PathVariable Long id){
 		return quizService.deleteQuiz(id);
 	}
   
@@ -61,8 +60,9 @@ public class QuizController {
   public QuizResponseDto addQuestion(@PathVariable Long id, QuestionRequestDto questionRequestDto) {
 	  return quizService.addQuestion(id, questionRequestDto);
   }
-  
-  @DeleteMapping("{id}/delete/{question_id}")
+//  
+  @DeleteMapping("{id}/delete/{questionId}")
   public QuestionResponseDto deleteQuestion(@PathVariable Long id,@PathVariable Long questionId) {
 	  return quizService.deleteQuestion(id, questionId);
+}
 }

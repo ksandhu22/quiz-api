@@ -17,9 +17,13 @@ public interface QuizMapper {
   
   
   //Maps quizDto to entity
-  Quiz requestDtoToEntity(QuizRequestDto quizRequestDto);
+  Quiz requestDtoToEntity(QuizRequestDto quizRequestDto);  
   
-  QuizResponseDto entityToResponseDto(Quiz quiz);
+  
+  
+  
+  
+  
   
 
 }

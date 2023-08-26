@@ -5,12 +5,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Data
-public class AnswerResponseDto {
-
-  private Long id;
-
-  private String text;
-  
-  private boolean correct;
-
+public class AnswerRequestDto {
+	private boolean correct;
+	private String text;
 }

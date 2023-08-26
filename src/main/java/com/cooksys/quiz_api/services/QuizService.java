@@ -7,14 +7,14 @@ import com.cooksys.quiz_api.dtos.QuestionResponseDto;
 import com.cooksys.quiz_api.dtos.QuizRequestDto;
 import com.cooksys.quiz_api.dtos.QuizResponseDto;
 import com.cooksys.quiz_api.exceptions.BadRequestException;
+import com.cooksys.quiz_api.exceptions.NotFoundException;
 
 public interface QuizService {
 
 	List<QuizResponseDto> getAllQuizzes();
 
-	QuizResponseDto createQuiz(QuizRequestDto quizRequestDto) throws BadRequestException;
+	QuizResponseDto createQuiz(QuizRequestDto newQuiz);
 
-	QuizResponseDto getQuizById(Long id);
 
 	QuizResponseDto deleteQuiz(Long id);
 
@@ -23,7 +23,7 @@ public interface QuizService {
 	QuestionResponseDto randomQuestion(Long id);
 
 	QuizResponseDto addQuestion(Long id, QuestionRequestDto questionRequestDto);
-
+//
 	QuestionResponseDto deleteQuestion(Long id, Long questionId);
 
 }

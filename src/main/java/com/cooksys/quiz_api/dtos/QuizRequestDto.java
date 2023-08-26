@@ -11,11 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class QuizRequestDto {
 
-	 private Long id;
+	 private String name;
 
-	 private String text;
-	 
-	 public Quiz quiz;
-
-	 public List<AnswerResponseDto> answers;
+	 public List<QuestionRequestDto> questions;
 }
